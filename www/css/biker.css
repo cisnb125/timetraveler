@@ -1,0 +1,22 @@
+.biker-main .scroll {
+  height: 100%;
+  margin-top: 60px;
+}
+
+.timetravel-parent {
+  height: 36vh !important;
+  width: 36vh !important;
+}
+.timetravel-history {
+  font-size: 16px!important;
+}
+
+.timetravel-metric {
+  font-size: 24px !important;
+  line-height: 30px;
+}
+
+.timetravel-text {
+  line-height: 18px;
+  font-size: 14px !important;
+}
