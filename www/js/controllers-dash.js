@@ -21,6 +21,8 @@ angular.module('starter.controllers-dash', [])
       $scope.leaderMsg = $scope.messages[0];
       $timeout(function() {});
     });
+
+
     //console.log(Variables.Metric)
     //Variables.changeMetric();
     //console.log(Variables.Metric)

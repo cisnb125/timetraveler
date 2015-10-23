@@ -49,6 +49,12 @@ angular.module('starter.controllers-other', [])
       $scope.devices = devices;
     });
 
+    $scope.connect = function(id) {
+      Bluetooth.connect(id).then(function() {
+        $scope.connectedId = id;
+      })
+    }
+
 })
 
 .controller('HistoryCtrl', function(

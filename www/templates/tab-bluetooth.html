@@ -5,11 +5,11 @@
     <ion-list>
 
       <ion-item ng-repeat="device in devices"
-                ng-click="bluetooth.connect(device.id)"
+                ng-click="connect(device.id)"
                 class="item-divider" type="item-text-wrap"
                 style="border: none !important; text-align: left !important; padding: 16px !important">
         <h2>{{device.name}}
-          <i ng-if="device.id === bluetooth.connectedId"
+          <i ng-if="device.id === connectedId"
              class="radio-icon ion-checkmark"
              style="position:absolute; right: 24px;"></i>
         </h2>

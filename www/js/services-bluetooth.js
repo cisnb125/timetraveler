@@ -24,6 +24,7 @@ app.factory('Bluetooth', function ($q) {
       });
     } else {
       console.log('Bluetooth.list - unavailable');
+      deferred.reject();
     }
 
     return deferred.promise;
@@ -32,7 +33,9 @@ app.factory('Bluetooth', function ($q) {
   o.connect = function(id) {
     var deferred = $q.defer();
 
+    console.log('Bluetooth.connect - starting');
     if (bluetoothSerial) {
+      console.log('Bluetooth.connect - processing');
       bluetoothSerial.connectInsecure(id, function() {
         console.log('Bluetooth.connect - connected to id:', id);
         o.connectedId = id;
@@ -43,6 +46,7 @@ app.factory('Bluetooth', function ($q) {
       });
     } else {
       console.log('Bluetooth.connect - unavailable');
+      deferred.reject();
     }
 
     return deferred.promise;
@@ -51,7 +55,7 @@ app.factory('Bluetooth', function ($q) {
   o.write = function(msg) {
     if (bluetoothSerial) {
       bluetoothSerial.write(msg);
-      console.log('Bluetooth.write - sent:', msg);
+      console.log('Bluetooth.write - sent msg: ', msg);
     } else {
       console.log('Bluetooth.write - unavailable');
     }

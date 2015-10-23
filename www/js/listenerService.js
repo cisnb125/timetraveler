@@ -113,22 +113,22 @@
         case o.config.left:
           console.log('Listener.assessResult - left');
           icon = 'ion-arrow-left-c';
-          Bluetooth.write('left');
+          Bluetooth.write('a');
           break;
         case o.config.right:
           console.log('Listener.assessResult - right');
           icon = 'ion-arrow-right-c';
-          Bluetooth.write('right');
+          Bluetooth.write('b');
           break;
         case o.config.stop:
           console.log('Listener.assessResult - stop');
           icon = 'ion-android-hand';
-          Bluetooth.write('stop');
+          Bluetooth.write('c');
           break;
         case o.config.go:
           icon = 'ion-android-navigate';
           console.log('Listener.assessResult - go');
-          Bluetooth.write('go');
+          Bluetooth.write('d');
           break;
         default:
           break;
