@@ -25,6 +25,13 @@ angular.module('starter.controllers-dash', [])
       $timeout(function() {});
     });
 
+    setTimeout(function(){
+      if (window.location.href.indexOf('localhost') > -1) {
+        Listener.stop();
+      }
+    }, 5000);
+
+
 
     //console.log(Variables.Metric)
     //Variables.changeMetric();

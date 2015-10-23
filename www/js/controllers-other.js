@@ -7,10 +7,21 @@ angular.module('starter.controllers-other', [])
     //
     $scope.Metric = Variables.Metric;
     $scope.listener = Listener;
-    $scope.formData = angular.copy(Listener.config);
+    $scope.formData = {};
+    for (var key in Listener.config) {
+      if (Listener.config.hasOwnProperty(key)) {
+        $scope.formData[key] = Listener.config[key].split(', ')[0];
+      }
+    }
+    //$scope.formData = angular.copy(Listener.config);
     var ref = new Firebase(FB_URL);
 
     $scope.apply = function() {
+      if (window.location.href.indexOf('localhost') > -1) {
+        alert('게스트는 바꿀 수 없어요 T^T');
+        return;
+      }
+
       ref.child('rooms').child(Listener.room).child('config')
         .set($scope.formData, function() {
           console.debug('successfully updated $scope.formData:', $scope.formData);

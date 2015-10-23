@@ -41,6 +41,21 @@
         if (!o.config) { o.config = o.defaultConfig; }
         o.setLanguage(o.config.lang);
         o.setTrigger(o.config.trigger, o.processResult);
+        for (var key in o.config) {
+          if (o.config.hasOwnProperty(key)) {
+            if (o.config[key] === '안서') {
+              o.config[key] = '안서, 안써, 안사요, 안소, 은서, 안산역, 안서요';
+            } else if (o.config[key] === '왼쪽') {
+              o.config[key] = '왼쪽, 외조, 왠 쪽, 왜 줘';
+            } else if (o.config[key] === '안가') {
+              o.config[key] = '안가, 망각, 안각, 안경';
+            } else if (o.config[key] === '가자') {
+              o.config[key] = '가자, 하자';
+            } else if (o.config[key] === 'right') {
+              o.config[key] = 'right, ride';
+            }
+          }
+        }
         o.start();
         //o.addResult('what\'s up?');
         console.log('annyang initiated');
@@ -109,30 +124,24 @@
     o.processResult = function(result) {
       var icon = '';
 
-      switch(result) {
-        case o.config.left:
-          console.log('Listener.assessResult - left');
-          icon = 'ion-arrow-left-c';
-          Bluetooth.write('a');
-          break;
-        case o.config.right:
-          console.log('Listener.assessResult - right');
-          icon = 'ion-arrow-right-c';
-          Bluetooth.write('b');
-          break;
-        case o.config.stop:
-          console.log('Listener.assessResult - stop');
-          icon = 'ion-android-hand';
-          Bluetooth.write('c');
-          break;
-        case o.config.go:
-          icon = 'ion-android-navigate';
-          console.log('Listener.assessResult - go');
-          Bluetooth.write('d');
-          break;
-        default:
-          break;
+      if (o.config.left.split(', ').indexOf(result) > -1) {
+        console.log('Listener.assessResult - left');
+        icon = 'ion-arrow-left-c';
+        Bluetooth.write('a');
+      } else if (o.config.right.split(', ').indexOf(result) > -1) {
+        console.log('Listener.assessResult - right');
+        icon = 'ion-arrow-right-c';
+        Bluetooth.write('b');
+      } else if (o.config.stop.split(', ').indexOf(result) > -1) {
+        console.log('Listener.assessResult - stop');
+        icon = 'ion-android-hand';
+        Bluetooth.write('c');
+      } else if (o.config.go.split(', ').indexOf(result) > -1) {
+        icon = 'ion-android-navigate';
+        console.log('Listener.assessResult - go');
+        Bluetooth.write('d');
       }
+
       o.addResult(result, icon);
     };
 
