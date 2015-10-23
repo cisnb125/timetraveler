@@ -1,13 +1,26 @@
 angular.module('starter.controllers-dash', [])
 
 .controller('DashCtrl', function(
-    $scope, $rootScope, $interval, $state,
-    $ionicModal, $ionicPopup,
-    Variables, Timer, History, Utils, Share, Listener) {
+    $scope, $rootScope, $interval, $state, $firebaseObject,
+    $ionicModal, $ionicPopup, $filter,
+    Variables, Timer, History, Utils, Share, Listener, FB_URL, $timeout) {
 
+    var ref = new Firebase(FB_URL);
     Listener.init();
-
     $scope.listener = Listener;
+
+    var messageRef = ref.child('rooms').child(Listener.room).child('messages');
+    //messages.once('value', function(snapshot) {
+    //  $scope.messages = snapshot;
+    //});
+    messageRef.on('value', function(snapshot) {
+      //$scope.msgObj = snapshot.val();
+      console.log(snapshot.val());
+      var msgArr = $filter('toArray')(snapshot.val());
+      $scope.messages = $filter('orderBy')(msgArr, '-time');
+      $scope.leaderMsg = $scope.messages[0];
+      $timeout(function() {});
+    });
     //console.log(Variables.Metric)
     //Variables.changeMetric();
     //console.log(Variables.Metric)

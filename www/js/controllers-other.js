@@ -1,24 +1,22 @@
 angular.module('starter.controllers-other', [])
 
 
-.controller('AccountCtrl', function($scope, Listener, Variables) {
+.controller('AccountCtrl', function($scope, Listener, Variables, FB_URL) {
 
     //
     //
     $scope.Metric = Variables.Metric;
+    $scope.listener = Listener;
+    $scope.formData = angular.copy(Listener.config);
+    var ref = new Firebase(FB_URL);
 
-    $scope.currentLanguage = 'ENG';
-
-    $scope.changeLanguage = function() {
-      var lang = '';
-      if ($scope.currentLanguage == '한글') {
-        lang = 'en-US';
-        $scope.currentLanguage = 'ENG';
-      } else {
-        lang = 'ko';
-        $scope.currentLanguage = '한글';
-      }
-      Listener.setLanguage(lang);
+    $scope.apply = function() {
+      ref.child('rooms').child(Listener.room).child('config')
+        .set($scope.formData, function() {
+          console.debug('successfully updated $scope.formData:', $scope.formData);
+          alert('저장완료');
+          //Listener.init();
+        });
     };
 
     $scope.changeMetric = function() {
@@ -44,7 +42,27 @@ angular.module('starter.controllers-other', [])
 // -----------------------------------------------------------------------------
 
 .controller('HistoryCtrl', function(
-    $scope, $state, History, $ionicPopup, Utils, $ionicListDelegate, $ionicModal, Share, Timer, Variables) {
+    $scope, $state, History, $ionicPopup, Utils, $ionicListDelegate, $ionicModal,
+    Share, Timer, Variables, Listener, FB_URL, $firebaseObject) {
+
+    var ref = new Firebase(FB_URL);
+    var roomsRef = ref.child('rooms');
+    var roomsObj = $firebaseObject(roomsRef);
+    roomsObj.$bindTo($scope, 'rooms');
+    $scope.listener = Listener;
+
+    $scope.formData = {};
+    $scope.createRoom = function() {
+      roomsRef.child($scope.formData.newRoom).child('messages').push({
+        msg: '새로운 채널',
+        time: new Date().getTime()
+      });
+      $scope.formData = {};
+    };
+
+    $scope.selectRoom = function(room) {
+      Listener.room = room;
+    };
 
 
     // -------------------------------------------------------------------------

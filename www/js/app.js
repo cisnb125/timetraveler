@@ -8,7 +8,7 @@ var SPEED_OF_LIGHT_MS = 299792458;
 var MPH_IN_KMH = 0.6213711922;
 
 
-angular.module('starter', [
+var app = angular.module('starter', [
   'ionic',
   'ionic.utils',
   'ngCordova',
@@ -19,7 +19,10 @@ angular.module('starter', [
   'starter.services-share',
   'starter.services-history',
   'starter.services-variables',
-  'angularMoment'
+  'angularMoment',
+  'firebase',
+  'angular-toArrayFilter',
+  'ngMaterial'
 ])
 
 .run(function($ionicPlatform) {
@@ -38,6 +41,8 @@ angular.module('starter', [
     if(navigator.splashscreen){
       navigator.splashscreen.hide();
     }
+
+    //amMoment.changeLocale('ko');
   });
 })
 
@@ -64,13 +69,18 @@ angular.module('starter', [
     });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider,
+                 $mdThemingProvider, $mdGestureProvider) {
 
+  $mdThemingProvider.theme('docs-dark', 'default')
+    .primaryPalette('yellow')
+    .dark();
+  $mdGestureProvider.skipClickHijack();
 
   // http://ionicframework.com/docs/api/provider/$ionicConfigProvider/
   // $ionicConfigProvider.views.transition('ios')
-  $ionicConfigProvider.tabs.style('standard')
-  $ionicConfigProvider.tabs.position('bottom')
+  $ionicConfigProvider.tabs.style('standard');
+  $ionicConfigProvider.tabs.position('bottom');
 
 
 
@@ -96,7 +106,8 @@ angular.module('starter', [
         templateUrl: 'templates/tab-dash.html',
         controller: 'DashCtrl'
       }
-    }
+    },
+    cache: false
   })
 
   .state('tab.settings', {
@@ -106,7 +117,8 @@ angular.module('starter', [
         templateUrl: 'templates/tab-settings.html',
         controller: 'AccountCtrl'
       }
-    }
+    },
+    cache: false
   })
     .state('tab.tutorial', {
       url: '/settings/tutorial',
@@ -134,7 +146,8 @@ angular.module('starter', [
         templateUrl: 'templates/tab-history.html',
         controller: 'HistoryCtrl'
       }
-    }
+    },
+    cache: false
   })
 
 
@@ -147,4 +160,6 @@ angular.module('starter', [
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
 
-});
+})
+
+.constant('FB_URL', 'https://arduino-biker.firebaseio.com/');

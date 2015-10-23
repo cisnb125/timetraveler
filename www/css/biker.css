@@ -3,6 +3,42 @@
   margin-top: 60px;
 }
 
+.biker-main .item-divider {
+  white-space: normal;
+}
+
+/* leader time */
+.timetravel-text {
+  position: absolute;
+  line-height: 18px;
+  font-size: 14px !important;
+  white-space: nowrap;
+  left: 50%;
+  bottom: -16vh;
+  transform: translate(-50%, 0%);
+}
+/* leader icon */
+.timetravel-value {
+  /*position: absolute;*/
+  /*width: 100%;*/
+  /*left: 0;*/
+  /*top: 6%;*/
+  font-size: 24vh !important;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -60%);
+}
+/* leader message */
+.timetravel-metric {
+  font-size: 4vh !important;
+  line-height: 0;
+}
+
+.button-light.timetravel-transmode {
+  white-space: nowrap;
+}
+
 .timetravel-parent {
   height: 36vh !important;
   width: 36vh !important;
@@ -11,12 +47,18 @@
   font-size: 16px!important;
 }
 
-.timetravel-metric {
-  font-size: 24px !important;
-  line-height: 30px;
+.inputdemoIcons .inputIconDemo {
+  min-height: 48px; }
+.inputdemoIcons md-input-container:not(.md-input-invalid) > md-icon.email {
+  color: green; }
+.inputdemoIcons md-input-container:not(.md-input-invalid) > md-icon.name {
+  color: dodgerblue; }
+.inputdemoIcons md-input-container.md-input-invalid > md-icon.email, .inputdemoIcons md-input-container.md-input-invalid > md-icon.name {
+  color: red; }
+
+.bike-channels md-input-container, .bike-channels .md-button {
+  padding: 2px 2px;
+  margin: 0;
 }
 
-.timetravel-text {
-  line-height: 18px;
-  font-size: 14px !important;
-}
+

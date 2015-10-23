@@ -1,17 +1,18 @@
-<ion-view view-title="<i class='logo-large'>TimeTraveler</i>">
+<ion-view
+  view-title="<i class='logo-large'>{{ listener.room }}</i>">
 
-  <ion-nav-buttons side="left">
-    <button class="button button-light" ng-click="openShareModal()">
-      <i class="ion-ios-upload-outline icon-custom"></i>
-    </button>
-  </ion-nav-buttons>
-  <ion-nav-buttons side="right">
-    <button class="button button-light" ng-click="saveTime()">
-      <i class="ion-ios-plus-outline icon-custom"
-         ng-show="TimerData.timerState != 'stop'"></i>
+  <!--<ion-nav-buttons side="left">-->
+    <!--<button class="button button-light" ng-click="openShareModal()">-->
+      <!--<i class="ion-ios-upload-outline icon-custom"></i>-->
+    <!--</button>-->
+  <!--</ion-nav-buttons>-->
+  <!--<ion-nav-buttons side="right">-->
+    <!--<button class="button button-light" ng-click="saveTime()">-->
+      <!--<i class="ion-ios-plus-outline icon-custom"-->
+         <!--ng-show="TimerData.timerState != 'stop'"></i>-->
 
-    </button>
-  </ion-nav-buttons>
+    <!--</button>-->
+  <!--</ion-nav-buttons>-->
 
 
   <ion-content
@@ -25,28 +26,29 @@
     <div style="width: 100% !important; text-align: center !important">
       <div class="timetravel-parent center"
            ng-click="startpauseTimer()">
-        <div style="display: block !important">
-          <p class="timetravel-text" style="height:24px;margin-top:0%;">
-            <span ng-if="!listener.results[0]">Time</span>
-            <!--{{listener.results[0].time}}-->
-            <span am-time-ago="listener.results[0].time"></span>
-          </p>
+        <div style="display: block !important; position: relative;">
 
-          <p class="{{timetravelValueAdj}}" ng-if="listener.results[0].icon">
-            <i ng-class="listener.results[0].icon"></i>
+
+          <p class="timetravel-value" ng-if="leaderMsg.icon">
+            <i ng-class="leaderMsg.icon"></i>
           </p>
-          <p class="timetravel-metric" ng-if="!listener.results[0].icon">
-            {{listener.results[0].msg}}
+          <p class="timetravel-metric" ng-if="!leaderMsg.icon">
+            {{leaderMsg.msg}}
           </p>
           <!--<span ng-if="!listener.results[0]">Content</span>-->
           <!--{{listener.results[0].msg}}-->
-
-          <p class="timetravel-metric"><br>
-            <!--{{TimerData.timerStr.timeTravelled.metric}}-->
+          <p class="timetravel-text">
+            <span ng-if="!leaderMsg">Time</span>
+            <span am-time-ago="leaderMsg.time"></span>
           </p>
+
+          <!--<p class="timetravel-metric"><br>-->
+            <!--{{TimerData.timerStr.timeTravelled.metric}}-->
+          <!--</p>-->
         </div>
       </div>
     </div>
+
 
     <!--
     <button class="button button-positive rounded center" ng-click="testTimeOut()" style="padding: 0 !important; margin: auto">
@@ -62,32 +64,34 @@
 
       <div class="col">
         <button class="button button-light timetravel-transmode" ng-click="resetTimer()">
-          <i class="ion-ios-reload icon-custom"></i>
+          <!--<i class="ion-ios-reload icon-custom"></i>-->
+          {{listener.config.lang}}
         </button>
       </div>
 
       <div class="col">
         <button class="button button-light timetravel-transmode" ng-click="listener.toggle()"
                 style="padding: 0 !important; margin: 0 !important">
-          <span ng-if="listener.on">Listening</span>
-          <span ng-if="!listener.on">Off</span>
+          <span ng-if="listener.on">듣는 중</span>
+          <span ng-if="!listener.on">꺼짐</span>
         </button>
       </div>
       <div class="col">
         <button class="button button-light timetravel-transmode" ng-click="openTransModes()"
                 style="padding: 0 !important; margin: 0 !important">
-          <i class="{{TransModes[Speed.transModeIndex].icon}} icon-custom icon-positive"></i>
+          {{listener.config.trigger}}
+          <!--<i class="{{TransModes[Speed.transModeIndex].icon}} icon-custom icon-positive"></i>-->
         </button>
       </div>
     </div>
 
 
     <ion-list>
-      <ion-item ng-repeat="result in listener.results"
+      <ion-item ng-repeat="result in messages"
           class="item-divider" type="item-text-wrap"
           style="border: none !important; text-align: left !important; padding: 16px !important; font-size:12px;">
         <!--<br><p style="height:4px"></p>-->
-        <i class="timetravel-history ng-binding">msg: {{result.msg}}</i>
+        <i class="timetravel-history ng-binding">{{result.msg}}</i>
         <span am-time-ago="result.time"></span>
         <!--Total time travel: {{result.time}}-->
       </ion-item>

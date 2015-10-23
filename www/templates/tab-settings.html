@@ -1,30 +1,72 @@
-<ion-view view-title="<i class='ion-ios-more icon-custom'></i>">
+<ion-view view-title="<i class='logo-large'>설정</i>">
   <ion-content class="padding" has-bouncing="true">
     <ion-list>
 
-      <ion-item class="item-stable item-remove-animate item-icon-right" type="item-text-wrap" style="border: none !important;" href="#/tab/settings/tutorial">
-        Time dilation
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
-      <ion-item class="item-stable  item-remove-animate item-icon-right" type="item-text-wrap" style="border: none !important;"  href="#/tab/settings/stars">
-        Enjoy the Nebula stars
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
+      <!--<ion-item class="item-stable item-remove-animate item-icon-right" type="item-text-wrap" style="border: none !important;" href="#/tab/settings/tutorial">-->
+        <!--Time dilation-->
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      <!--</ion-item>-->
+      <!--<ion-item class="item-stable  item-remove-animate item-icon-right" type="item-text-wrap" style="border: none !important;"  href="#/tab/settings/stars">-->
+        <!--Enjoy the Nebula stars-->
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      <!--</ion-item>-->
 
-      <ion-item class="item-divider" type="item-text-wrap" style="border: none !important; background: none !important;">
+      <!--<ion-item class="item-divider" type="item-text-wrap" style="border: none !important; background: none !important;">-->
 
-      </ion-item>
+      <!--</ion-item>-->
 
       <!--<ion-item class="item-stable item-remove-animate" type="item-text-wrap" style="border: none !important;" ng-click="changeMetric()">-->
         <!--Speed unit-->
         <!--<span class="badge badge-assertive">{{Metric.choice}}</span>-->
       <!--</ion-item>-->
 
-      <ion-item class="item-stable item-remove-animate" type="item-text-wrap" style="border: none !important;"
-                ng-click="changeLanguage()">
-        언어 변경
-        <span class="badge badge-assertive">{{ currentLanguage }}</span>
-      </ion-item>
+      <!--<ion-item class="item-stable item-remove-animate" type="item-text-wrap" style="border: none !important;"-->
+                <!--ng-click="changeLanguage()">-->
+        <!--언어 변경-->
+        <!--<span class="badge badge-assertive">{{ currentLanguage }}</span>-->
+      <!--</ion-item>-->
+      <!--<ion-item class="item-stable" type="item-text-wrap">-->
+        <!--hey-->
+        <!--<md-input-container md-no-float>-->
+          <!--<input ng-model="user.address2" placeholder="Address 2">-->
+        <!--</md-input-container>-->
+      <!--</ion-item>-->
+
+      <md-content md-theme="docs-dark" layout-padding layout="row" layout-sm="column">
+        <form ng-submit="apply()">
+          <md-input-container>
+            <label>언어</label>
+            <md-select ng-model="formData.lang">
+              <md-option ng-repeat="lang in listener.langs" value="{{lang.code}}">
+                {{lang.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container>
+            <label>트리거</label>
+            <input ng-model="formData.trigger">
+          </md-input-container>
+          <md-input-container>
+            <label>가기</label>
+            <input ng-model="formData.go">
+          </md-input-container>
+          <md-input-container>
+            <label>멈추기</label>
+            <input ng-model="formData.stop">
+          </md-input-container>
+          <md-input-container>
+            <label>왼쪽</label>
+            <input ng-model="formData.left">
+          </md-input-container>
+          <md-input-container>
+            <label>오른쪽</label>
+            <input ng-model="formData.right">
+          </md-input-container>
+        </form>
+        <md-button ng-click="apply()">저장하기</md-button>
+      </md-content>
+
+
 
     </ion-list>
   </ion-content>
