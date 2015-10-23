@@ -63,7 +63,7 @@
          style="margin-top: 10px; padding:0 !important; padding-left: 10vw !important; padding-right: 10vw !important; width: 100% !important">
 
       <div class="col">
-        <button class="button button-light timetravel-transmode" ng-click="resetTimer()">
+        <button class="button button-light timetravel-transmode" ng-click="write('a')">
           <!--<i class="ion-ios-reload icon-custom"></i>-->
           {{listener.config.lang}}
         </button>
@@ -77,7 +77,7 @@
         </button>
       </div>
       <div class="col">
-        <button class="button button-light timetravel-transmode" ng-click="openTransModes()"
+        <button class="button button-light timetravel-transmode" ng-click="write('b')"
                 style="padding: 0 !important; margin: 0 !important">
           {{listener.config.trigger}}
           <!--<i class="{{TransModes[Speed.transModeIndex].icon}} icon-custom icon-positive"></i>-->

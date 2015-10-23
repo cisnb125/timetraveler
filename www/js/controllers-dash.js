@@ -3,11 +3,14 @@ angular.module('starter.controllers-dash', [])
 .controller('DashCtrl', function(
     $scope, $rootScope, $interval, $state, $firebaseObject,
     $ionicModal, $ionicPopup, $filter,
-    Variables, Timer, History, Utils, Share, Listener, FB_URL, $timeout) {
+    Variables, Timer, History, Utils, Share, Listener, FB_URL, $timeout, Bluetooth) {
 
     var ref = new Firebase(FB_URL);
     Listener.init();
     $scope.listener = Listener;
+    $scope.write = function(cmd) {
+      Bluetooth.write(cmd);
+    };
 
     var messageRef = ref.child('rooms').child(Listener.room).child('messages');
     //messages.once('value', function(snapshot) {
