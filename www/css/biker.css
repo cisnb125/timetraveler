@@ -56,9 +56,12 @@
 .inputdemoIcons md-input-container.md-input-invalid > md-icon.email, .inputdemoIcons md-input-container.md-input-invalid > md-icon.name {
   color: red; }
 
-.bike-channels md-input-container, .bike-channels .md-button {
+.biker-channels md-input-container, .bike-channels .md-button {
   padding: 2px 2px;
   margin: 0;
 }
 
+.biker-settings md-input-container {
+  padding: 2px 2px;
+}
 

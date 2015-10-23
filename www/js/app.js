@@ -120,6 +120,17 @@ var app = angular.module('starter', [
     },
     cache: false
   })
+  .state('tab.bluetooth', {
+    url: '/bluetooth',
+    views: {
+      'tab-bluetooth': {
+        templateUrl: 'templates/tab-bluetooth.html',
+        controller: 'BluetoothCtrl'
+      }
+    },
+    cache: false
+  })
+
     .state('tab.tutorial', {
       url: '/settings/tutorial',
       views: {

@@ -1,7 +1,7 @@
 (function (annyang) {
   'use strict';
 
-  angular.module('starter').factory('Listener', function($rootScope, FB_URL) {
+  angular.module('starter').factory('Listener', function($rootScope, Bluetooth, FB_URL) {
     var o = {
       commands: {},
       results: [],
@@ -113,18 +113,22 @@
         case o.config.left:
           console.log('Listener.assessResult - left');
           icon = 'ion-arrow-left-c';
+          Bluetooth.write('left');
           break;
         case o.config.right:
           console.log('Listener.assessResult - right');
           icon = 'ion-arrow-right-c';
+          Bluetooth.write('right');
           break;
         case o.config.stop:
           console.log('Listener.assessResult - stop');
           icon = 'ion-android-hand';
+          Bluetooth.write('stop');
           break;
         case o.config.go:
           icon = 'ion-android-navigate';
           console.log('Listener.assessResult - go');
+          Bluetooth.write('go');
           break;
         default:
           break;

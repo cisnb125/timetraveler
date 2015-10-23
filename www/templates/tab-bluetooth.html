@@ -1,0 +1,25 @@
+<ion-view view-title="<i class='logo-large'>블루투스</i>">
+
+  <ion-content class="padding biker-bluetooth" has-bouncing="true">
+
+    <ion-list>
+
+      <ion-item ng-repeat="device in devices"
+                ng-click="bluetooth.connect(device.id)"
+                class="item-divider" type="item-text-wrap"
+                style="border: none !important; text-align: left !important; padding: 16px !important">
+        <h2>{{device.name}}
+          <i ng-if="device.id === bluetooth.connectedId"
+             class="radio-icon ion-checkmark"
+             style="position:absolute; right: 24px;"></i>
+        </h2>
+        <p>{{device.id}} &nbsp; class: {{device.class}}</p>
+
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+</ion-view>
+
+</script>

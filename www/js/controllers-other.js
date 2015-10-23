@@ -40,6 +40,16 @@ angular.module('starter.controllers-other', [])
 //
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
+.controller('BluetoothCtrl', function(
+  $scope, Bluetooth, Listener, FB_URL, $firebaseObject) {
+
+    $scope.bluetooth = Bluetooth;
+
+    Bluetooth.list().then(function(devices) {
+      $scope.devices = devices;
+    });
+
+})
 
 .controller('HistoryCtrl', function(
     $scope, $state, History, $ionicPopup, Utils, $ionicListDelegate, $ionicModal,
