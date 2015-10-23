@@ -1,0 +1,7 @@
+{
+  "name": "Arduino-Biker",
+  "description": "A simple Arduino, Ionic, and Annyang project",
+  "repository": "https://github.com/cisnb125/timetraveler",
+  "logo": "",
+  "keywords": ["ionic", "arduino", "annyang", "bluetooth"]
+}
