@@ -42,10 +42,12 @@ app.factory('Bluetooth', function ($q) {
         deferred.resolve();
       }, function() {
         console.log('Bluetooth.connect - failed');
+        alert('Failed to connect');
         deferred.reject();
       });
     } else {
       console.log('Bluetooth.connect - unavailable');
+      alert('Connected');
       deferred.reject();
     }
 

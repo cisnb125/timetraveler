@@ -17,7 +17,7 @@ angular.module('starter.controllers-other', [])
     var ref = new Firebase(FB_URL);
 
     $scope.apply = function() {
-      if (window.location.href.indexOf('localhost') > -1) {
+      if (window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('herokuapp') > -1) {
         alert('게스트는 바꿀 수 없어요 T^T');
         return;
       }

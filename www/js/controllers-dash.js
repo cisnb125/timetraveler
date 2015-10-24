@@ -25,11 +25,20 @@ angular.module('starter.controllers-dash', [])
       $timeout(function() {});
     });
 
-    setTimeout(function(){
-      if (window.location.href.indexOf('localhost') > -1) {
+    console.log('window.location.href:', window.location.href);
+    if (window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('herokuapp') > -1) {
+      $timeout(function () {
         Listener.stop();
-      }
-    }, 5000);
+      }, 4000);
+    }
+
+    //setTimeout(function(){
+    //  console.log('window.location.href:', window.location.href);
+    //  if (window.location.href.indexOf('localhost') > -1) {
+    //    Listener.stop();
+    //  }
+    //  $timeout(function() {});
+    //}, 1000);
 
 
 
