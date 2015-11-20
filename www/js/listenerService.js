@@ -53,6 +53,8 @@
               o.config[key] = '가자, 하자';
             } else if (o.config[key] === 'right') {
               o.config[key] = 'right, ride';
+            } else if (o.config[key] === '멈춰') {
+              o.config[key] = '멈춰, 멈춰라, 멈춰요'
             }
           }
         }
