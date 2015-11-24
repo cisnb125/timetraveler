@@ -55,11 +55,11 @@ app.factory('Bluetooth', function ($q) {
   };
 
   o.write = function(msg) {
-    if (bluetoothSerial) {
+    if (bluetoothSerial === 'undefined') {
+      console.log('Bluetooth.write - unavailable');
+    } else {
       bluetoothSerial.write(msg);
       console.log('Bluetooth.write - sent msg: ', msg);
-    } else {
-      console.log('Bluetooth.write - unavailable');
     }
   };
 

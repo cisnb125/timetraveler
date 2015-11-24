@@ -22,13 +22,16 @@ angular.module('starter.controllers-dash', [])
       var msgArr = $filter('toArray')(snapshot.val());
       $scope.messages = $filter('orderBy')(msgArr, '-time');
       $scope.leaderMsg = $scope.messages[0];
+      if ($scope.leaderMsg.msg === '행복해') {
+        $scope.test = true;
+      }
       $timeout(function() {});
     });
 
     console.log('window.location.href:', window.location.href);
     if (window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('herokuapp') > -1) {
       $timeout(function () {
-        Listener.stop();
+        //Listener.stop();
       }, 4000);
     }
 

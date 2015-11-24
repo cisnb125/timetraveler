@@ -22,7 +22,9 @@ var app = angular.module('starter', [
   'angularMoment',
   'firebase',
   'angular-toArrayFilter',
-  'ngMaterial'
+  'ngMaterial',
+  'dbaq.emoji',
+  'ngSanitize'
 ])
 
 .run(function($ionicPlatform) {

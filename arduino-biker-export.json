@@ -1,0 +1,69 @@
+{
+  "rooms" : {
+    "English" : {
+      "config" : {
+        "happy" : "happy",
+        "angry" : "angry",
+        "sad" : "sad",
+        "joyful" : "joyful",
+        "trigger" : "I am ",
+        "lang" : "en-US"
+      },
+      "messages" : {
+        "-K1IGWA-FQwr-vdr-CYx" : {
+          "msg" : "새로운 채널",
+          "time" : 1445579848227
+        }
+      }
+    },
+    "한국어" : {
+      "config" : {
+        "happy" : "행복해",
+        "angry" : "화나",
+        "sad" : "슬퍼",
+        "joyful" : "기뻐",
+        "trigger" : "나는 ",
+        "lang" : "ko"
+      },
+      "messages" : {
+        "-K1HpwVwuj2rOoqdOgsz" : {
+          "icon" : "",
+          "msg" : "what's up?",
+          "time" : 1445572620244
+        }
+      }
+    },
+    "中文" : {
+      "config" : {
+        "happy" : "开心",
+        "angry" : "生气",
+        "sad" : "伤心",
+        "joyful" : "快乐",
+        "trigger" : "我很",
+        "lang" : "ko"
+      },
+      "messages" : {
+        "-K1IEpvOLNT9LRMqJ3Cb" : {
+          "msg" : "새로운 채널",
+          "time" : 1445579408934
+        }
+      }
+    },
+    "日本語" : {
+      "config" : {
+        "happy" : "행복해",
+        "angry" : "화나",
+        "sad" : "슬퍼",
+        "joyful" : "기뻐",
+        "trigger" : "나",
+        "lang" : "ko"
+      },
+      "messages" : {
+        "-K1K1EZKLaLEx7SJFsrq" : {
+          "msg" : "새로운 채널",
+          "time" : 1445609392010
+        }
+      }
+    }
+  }
+}

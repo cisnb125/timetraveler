@@ -6,7 +6,7 @@
       commands: {},
       results: [],
       on: false,
-      room: '끼허브',
+      room: '한국어',
       langs: [
         {},
         { name: '한글', code: 'ko' },
@@ -18,11 +18,11 @@
       ],
       defaultConfig: {
         lang: 'en-US',
-        trigger: 'bike',
-        go: 'go',
-        stop: 'stop',
-        left: 'left',
-        right: 'right'
+        trigger: 'I am ',
+        happy: 'happy',
+        angry: 'angry',
+        sad: 'sad',
+        joyful: 'joyful'
       },
       config: {}
     };
@@ -31,6 +31,8 @@
 
     // Initialize with a custom phrase. Defaults to 'bike'
     o.init = function(customTrigger) {
+      annyang.debug();
+      //o.stop();
       o.clearResults();
       var configRef = ref.child('rooms').child(o.room).child('config');
       //if (customTrigger === undefined) {
@@ -39,9 +41,12 @@
       configRef.once('value', function(snapshot) {
         o.config = snapshot.val();
         if (!o.config) { o.config = o.defaultConfig; }
+        console.log('Listener.init - o.config.lang:', o.config.lang);
         o.setLanguage(o.config.lang);
+        //o.setLanguage('zh-cmn');
         o.setTrigger(o.config.trigger, o.processResult);
         for (var key in o.config) {
+          console.log(key);
           if (o.config.hasOwnProperty(key)) {
             if (o.config[key] === '안서') {
               o.config[key] = '안서, 안써, 안사요, 안소, 은서, 안산역, 안서요';
@@ -66,8 +71,21 @@
 
     // Remove all existing commands and add a new command.
     o.setTrigger = function(trigger, callback) {
+      console.log(trigger);
       o.removeCommands();
-      o.addCommand(trigger + ' *term', callback);
+      o.addCommand(trigger + '*term', callback);
+      //o.addCommand('你好*', function() {
+      //  alert('I got you.');
+        //o.init();
+        //o.stop();
+        //setTimeout(function() {
+        //  o.start();
+        //}, 1000)
+      //});
+
+      //o.addCommand('안녕 ()', function() {
+      //  console.log('안녕');
+      //});
     };
 
     //o.addCommands = function(commands) {
@@ -124,23 +142,26 @@
     };
 
     o.processResult = function(result) {
+      console.log('Listener.processResult - result:', result);
+      result = result.trim();
       var icon = '';
+      console.log(o.config.happy.split(', '));
 
-      if (o.config.left.split(', ').indexOf(result) > -1) {
-        console.log('Listener.assessResult - left');
-        icon = 'ion-arrow-left-c';
+      if (o.config.happy.split(', ').indexOf(result) > -1) {
+        console.log('Listener.assessResult - happy');
+        icon = 'happy';
         Bluetooth.write('a');
-      } else if (o.config.right.split(', ').indexOf(result) > -1) {
-        console.log('Listener.assessResult - right');
-        icon = 'ion-arrow-right-c';
+      } else if (o.config.angry.split(', ').indexOf(result) > -1) {
+        console.log('Listener.assessResult - angry');
+        icon = 'angry';
         Bluetooth.write('b');
-      } else if (o.config.stop.split(', ').indexOf(result) > -1) {
-        console.log('Listener.assessResult - stop');
-        icon = 'ion-android-hand';
+      } else if (o.config.sad.split(', ').indexOf(result) > -1) {
+        console.log('Listener.assessResult - sad');
+        icon = 'sad';
         Bluetooth.write('c');
-      } else if (o.config.go.split(', ').indexOf(result) > -1) {
-        icon = 'ion-android-navigate';
-        console.log('Listener.assessResult - go');
+      } else if (o.config.joyful.split(', ').indexOf(result) > -1) {
+        icon = 'joyful';
+        console.log('Listener.assessResult - joyful');
         Bluetooth.write('d');
       }
 

@@ -25,13 +25,18 @@
 
     <div style="width: 100% !important; text-align: center !important">
       <div class="timetravel-parent center"
-           ng-click="startpauseTimer()">
+           ng-click="startpauseTimer()"
+           style="background-image:url('img/{{leaderMsg.icon}}-o.gif')!important;
+                  background-size:cover!important; background-position:center center!important">
         <div style="display: block !important; position: relative;">
-
-
-          <p class="timetravel-value" ng-if="leaderMsg.icon">
-            <i ng-class="leaderMsg.icon"></i>
-          </p>
+          <!--<p class="timetravel-value" ng-if="leaderMsg.icon">-->
+            <!--&lt;!&ndash;<img ng-src="../img/{{listener.config.lang}}/happy.gif" ng-if="leaderMsg.msg === '행복해' || leaderMsg.msg === 'happy'" height="250">&ndash;&gt;-->
+            <!--&lt;!&ndash;<img ng-src="../img/{{listener.config.lang}}/angry.gif" ng-if="leaderMsg.msg === '화나' || leaderMsg.msg === 'angry'" height="250">&ndash;&gt;-->
+            <!--&lt;!&ndash;<img ng-src="../img/{{listener.config.lang}}/sad.gif" ng-if="leaderMsg.msg === '슬퍼' || leaderMsg.msg === 'sad'" height="250">&ndash;&gt;-->
+            <!--&lt;!&ndash;<img ng-src="../img/{{listener.config.lang}}/joyful.gif" ng-if="leaderMsg.msg === '기뻐' || leaderMsg.msg === 'joyful'" height="250">&ndash;&gt;-->
+            <!--&lt;!&ndash;<i ng-class="leaderMsg.icon"></i>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span ng-bind-html="output | emoji"></span>&ndash;&gt;-->
+          <!--</p>-->
           <p class="timetravel-metric" ng-if="!leaderMsg.icon">
             {{leaderMsg.msg}}
           </p>
@@ -60,10 +65,15 @@
     <!-- <p>TimerData: {{TimerData}}</p> -->
 
     <div class="row"
-         style="margin-top: 10px; padding:0 !important; padding-left: 10vw !important; padding-right: 10vw !important; width: 100% !important">
+         style="margin-top: 10px; padding:0 !important; width: 100% !important">
 
       <div class="col">
-        <button class="button button-light timetravel-transmode" ng-click="write('a')">
+        <button class="button button-light timetravel-transmode" ng-click="listener.processResult(listener.config.happy)">
+          <!--<i class="ion-ios-reload icon-custom"></i>-->
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-light timetravel-transmode" ng-click="listener.processResult(listener.config.angry)">
           <!--<i class="ion-ios-reload icon-custom"></i>-->
           {{listener.config.lang}}
         </button>
@@ -77,14 +87,16 @@
         </button>
       </div>
       <div class="col">
-        <button class="button button-light timetravel-transmode" ng-click="write('b')"
-                style="padding: 0 !important; margin: 0 !important">
+        <button class="button button-light timetravel-transmode" ng-click="listener.processResult(listener.config.sad)">
           {{listener.config.trigger}}
-          <!--<i class="{{TransModes[Speed.transModeIndex].icon}} icon-custom icon-positive"></i>-->
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-light timetravel-transmode" ng-click="listener.processResult(listener.config.joyful)">
+          <!--<i class="ion-ios-reload icon-custom"></i>-->
         </button>
       </div>
     </div>
-
 
     <ion-list>
       <ion-item ng-repeat="result in messages"
